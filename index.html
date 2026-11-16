@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BOTHLEGS ($BOTHLEGS) — Nah both legs is crazy</title>
+  <meta name="description" content="The dance that broke X is now a coin. $BOTHLEGS on Solana. Call a dance-off.">
+  <meta name="theme-color" content="#0a0014">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0014;
+      --card: #160028;
+      --ink: #f6f0ff;
+      --mute: #c9b7e6;
+      --green: #39ff14;
+      --yellow: #ffe600;
+      --pink: #ff2bd6;
+      --violet: #c026ff;
+      --line: #3d2458;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { background: radial-gradient(900px 520px at 50% -10%, #3a0a66 0%, transparent 58%), var(--bg); color: var(--ink); }
+    body {
+      margin: 0;
+      font-family: Outfit, system-ui, sans-serif;
+      overflow-x: hidden;
+      overflow-wrap: anywhere;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+    img, iframe { max-width: 100%; height: auto; }
+    input { font-size: 16px; }
+    a { color: inherit; }
+    .ticker { overflow: hidden; border-bottom: 2px solid #000; background: var(--yellow); color: #0a0014; font-weight: 800; letter-spacing: 0.12em; font-size: 12px; text-transform: uppercase; }
+    .ticker-track { display: flex; width: max-content; animation: tick 28s linear infinite; }
+    .ticker span { padding: 8px 12px; white-space: nowrap; }
+    @keyframes tick { to { transform: translateX(-50%); } }
+    header, main, footer { width: min(720px, calc(100% - 24px)); margin: 0 auto; }
+    header { text-align: center; padding: 28px 0 12px; }
+    .pill { display: inline-block; border: 1px solid rgba(57,255,20,.5); background: rgba(57,255,20,.1); color: var(--green); border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    .ring { width: min(240px, 62vw); margin: 18px auto 0; padding: 6px; border-radius: 50%; background: conic-gradient(from 140deg, #c026ff, #39ff14, #ffe600, #ff2bd6, #00f0ff, #c026ff); box-shadow: 0 0 36px rgba(192,38,255,.4); }
+    .ring img { display: block; width: 100%; border-radius: 50%; background: #fff; }
+    h1 { margin: 16px 0 0; font-family: Bangers, Impact, sans-serif; font-size: clamp(3.1rem, 16vw, 7rem); line-height: .85; letter-spacing: .03em; background: linear-gradient(90deg, #39ff14, #ffe600 42%, #ff2bd6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .tick { font-family: Bangers, Impact, sans-serif; color: var(--yellow); letter-spacing: .08em; font-size: clamp(1.4rem, 6vw, 2rem); margin: 8px 0 0; }
+    .shout { font-family: Bangers, Impact, sans-serif; font-size: clamp(1.35rem, 6vw, 1.8rem); margin: 8px 0 0; }
+    .sub, .note { color: var(--mute); font-weight: 600; }
+    .sub { margin: 6px auto 0; max-width: 28ch; }
+    .note { margin: 10px auto 0; max-width: 36ch; font-size: .95rem; }
+    .ca { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 22px auto 0; padding: 8px 8px 8px 14px; border: 2px solid var(--violet); border-radius: 16px; background: var(--card); text-align: left; }
+    .ca b { color: var(--green); letter-spacing: .1em; }
+    .ca code { flex: 1 1 140px; min-width: 0; overflow-wrap: anywhere; font-size: .8rem; }
+    .ca .buy { flex: 1 1 100%; }
+    button, .btn { font: inherit; font-weight: 800; cursor: pointer; text-decoration: none; }
+    .buy { border: 3px solid #000; box-shadow: 4px 4px 0 #000; background: var(--green); color: #0a0014; border-radius: 14px; min-height: 48px; padding: 0 16px; }
+    .ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 16px; border: 1px solid var(--line); background: var(--card); }
+    .cta { display: grid; gap: 10px; margin-top: 16px; }
+    #diffs { grid-template-columns: 1fr 1fr; }
+    .map { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 22px; text-align: left; text-decoration: none; }
+    .map a { border: 1px solid var(--line); background: var(--card); border-radius: 16px; padding: 12px; }
+    .map small { color: var(--yellow); font-weight: 800; }
+    section { padding: 36px 0 8px; }
+    h2 { font-family: Bangers, Impact, sans-serif; font-size: clamp(2.6rem, 10vw, 4rem); text-align: center; margin: 6px 0 0; letter-spacing: .03em; line-height: .95; }
+    .kicker { text-align: center; color: var(--yellow); font-size: 12px; font-weight: 800; letter-spacing: .14em; }
+    .lead { text-align: center; color: var(--mute); font-weight: 600; }
+    label { display: block; font-weight: 800; margin-top: 12px; }
+    input { width: 100%; margin-top: 6px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--ink); padding: 12px; font: inherit; font-weight: 600; }
+    .lanes { display: grid; gap: 10px; margin-top: 14px; }
+    .lane { border: 1px solid var(--line); background: var(--card); border-radius: 16px; padding: 14px; }
+    .combo { font-family: Bangers, Impact, sans-serif; font-size: 4rem; line-height: 1; color: var(--green); margin: 6px 0 0; }
+    .clock { text-align: center; font-family: Bangers, Impact, sans-serif; font-size: 4.5rem; color: var(--yellow); margin: 8px 0 0; }
+    .legs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .legs button { min-height: 52px; border-radius: 12px; }
+    .right { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    .steps { list-style: none; padding: 0; margin: 16px 0 0; }
+    .steps li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
+    .n { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; background: var(--violet); font-weight: 800; }
+    .log { list-style: none; padding: 0; margin: 18px 0 0; }
+    .log li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: .95rem; }
+    .log li span:first-child { min-width: 0; overflow-wrap: anywhere; }
+    .win { color: var(--green); font-weight: 800; white-space: nowrap; }
+    footer { padding: 28px 0 48px; color: var(--mute); }
+    footer .brand { font-family: Bangers, Impact, sans-serif; color: var(--ink); font-size: clamp(2rem, 8vw, 2.4rem); letter-spacing: .04em; }
+    .links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 12px; }
+    .links a { color: var(--ink); font-weight: 800; display: inline-flex; align-items: center; min-height: 44px; }
+    .fine { font-size: .8rem; max-width: 46ch; }
+    @media (min-width: 480px) {
+      .map { grid-template-columns: repeat(3, 1fr); }
+      .ca .buy { flex: 0 0 auto; }
+    }
+    @media (min-width: 720px) {
+      .lanes { grid-template-columns: 1fr 1fr; }
+      .cta { grid-template-columns: 1fr 1fr; }
+      .steps { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; }
+      #diffs { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (min-width: 960px) {
+      header, main, footer { width: min(1040px, calc(100% - 48px)); }
+      .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; text-align: left; }
+      .hero .ring { margin-left: 0; }
+      .hero .sub, .hero .note { margin-left: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+  </style>
+</head>
+<body>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Both legs is crazy · The dance that broke X · $BOTHLEGS · Live on pump.fun · </span>
+      <span>Both legs is crazy · The dance that broke X · $BOTHLEGS · Live on pump.fun · </span>
+    </div>
+  </div>
+  <header>
+    <div class="hero">
+    <div>
+    <p class="pill">Solana · Live on pump.fun</p>
+    <div class="ring">
+      <img src="https://bothlegs.surge.sh/bothlegs_logo.jpg" width="1024" height="1024" alt="Both Legs logo: jeans kicking on both legs">
+    </div>
+    <h1>BOTH LEGS</h1>
+    <p class="tick">$BOTHLEGS</p>
+    <p class="shout">Nah both legs is crazy</p>
+    <p class="sub">The dance that broke X, now a coin on pump.fun.</p>
+    </div>
+    <div>
+    <p class="note" id="tape">Here's the CA. Copy it, then check it twice before you buy.</p>
+    <div class="ca">
+      <b>CA</b>
+      <code id="ca">ANwrbpNYrQDjojiSiDP4Z4vYm9Rt3eHH8NwUTGnTpump</code>
+      <button class="buy" type="button" id="copy">Copy</button>
+    </div>
+    <p class="note" id="copied" hidden>Copied. Both legs go crazy.</p>
+    <div class="cta">
+      <a class="buy" style="display:inline-flex;align-items:center;justify-content:center" href="https://pump.fun/coin/ANwrbpNYrQDjojiSiDP4Z4vYm9Rt3eHH8NwUTGnTpump" target="_blank" rel="noopener noreferrer">Buy on pump.fun</a>
+      <a class="ghost" href="https://dexscreener.com/solana/ANwrbpNYrQDjojiSiDP4Z4vYm9Rt3eHH8NwUTGnTpump" target="_blank" rel="noopener noreferrer">DexScreener</a>
+      <a class="ghost" href="https://x.com/BOTHLEGScoin" target="_blank" rel="noopener noreferrer">Follow on X</a>
+      <a class="ghost" href="https://t.me/bothlegscoin" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a class="ghost" href="#floor" style="border-color:#ffe600;color:#ffe600">Call a dance-off</a>
+    </div>
+    <nav class="map" aria-label="On this page">
+      <a href="#token"><small>01</small><br>The token</a>
+      <a href="#buy"><small>02</small><br>How to buy</a>
+      <a href="#floor"><small>03</small><br>The floor</a>
+    </nav>
+    </div>
+    </div>
+  </header>
+  <main>
+    <section id="floor">
+      <p class="kicker">HOLDERS</p>
+      <h2>Call a dance-off.</h2>
+      <p class="lead">Twenty seconds against another holder or the floor bot. Alternate legs. The same leg twice kills the combo. Best peak takes the floor.</p>
+      <p class="lead" style="font-size:.8rem">Scores stay in this browser. This floor does not check a wallet.</p>
+      <div id="setup">
+        <div class="cta" id="modes">
+          <button type="button" id="mode-holder" class="ghost">Another holder</button>
+          <button type="button" id="mode-bot" class="buy">Floor bot</button>
+        </div>
+        <label>Your name<input id="name-a" value="You" maxlength="24"></label>
+        <label id="other-wrap">Other holder<input id="name-b" value="Right holder" maxlength="24"></label>
+        <p class="lead" id="bot-note" hidden>Pick how sharp the floor bot is.</p>
+        <div class="cta" id="diffs">
+          <button type="button" data-diff="easy" class="ghost">Easy</button>
+          <button type="button" data-diff="normal" class="buy">Normal</button>
+          <button type="button" data-diff="hard" class="ghost">Hard</button>
+          <button type="button" data-diff="insane" class="ghost">Insane</button>
+        </div>
+        <p class="lead" id="diff-note">Normal. The bot slips sometimes.</p>
+        <button class="buy" type="button" id="start" style="width:100%;margin-top:14px">Start the floor</button>
+      </div>
+      <div id="board" hidden>
+        <p class="clock" id="clock">20</p>
+        <p class="kicker">SECONDS LEFT</p>
+        <div class="lanes">
+          <article class="lane">
+            <strong id="label-a">Left holder</strong>
+            <p class="combo" id="combo-a">0</p>
+            <p class="sub" id="peak-a">combo · peak 0</p>
+            <div class="legs">
+              <button class="buy" type="button" data-side="a" data-leg="L">LEFT</button>
+              <button class="right" type="button" data-side="a" data-leg="R">RIGHT</button>
+            </div>
+          </article>
+          <article class="lane">
+            <strong id="label-b">Right holder</strong>
+            <p class="combo" id="combo-b">0</p>
+            <p class="sub" id="peak-b">combo · peak 0</p>
+            <p class="sub" id="bot-live" hidden>Bot is dancing. You cannot tap its legs.</p>
+            <div class="legs" id="legs-b">
+              <button class="buy" type="button" data-side="b" data-leg="L">LEFT</button>
+              <button class="right" type="button" data-side="b" data-leg="R">RIGHT</button>
+            </div>
+          </article>
+        </div>
+        <p class="shout" id="result" hidden></p>
+        <button class="buy" type="button" id="again" hidden style="width:100%;margin-top:12px">Rematch</button>
+        <button class="ghost" type="button" id="change" hidden style="width:100%;margin-top:8px">Change opponent</button>
+      </div>
+      <ol class="log" id="log"></ol>
+    </section>
+    <section id="buy">
+      <p class="kicker">FOUR STEPS</p>
+      <h2>How to buy</h2>
+      <p class="lead">Then try not to kick the screen.</p>
+      <ol class="steps">
+        <li><span class="n">1</span><div><strong>Get Phantom</strong><p class="sub">Set up a Solana wallet at phantom.com.</p></div></li>
+        <li><span class="n">2</span><div><strong>Get SOL</strong><p class="sub">Add SOL to your wallet for the swap.</p></div></li>
+        <li><span class="n">3</span><div><strong>Open pump.fun</strong><p class="sub">Open the $BOTHLEGS page.</p></div></li>
+        <li><span class="n">4</span><div><strong>Check the CA and swap</strong><p class="sub">Match the contract on this page before you trade.</p></div></li>
+      </ol>
+    </section>
+    <section id="token">
+      <p class="kicker">THE TOKEN</p>
+      <h2>Meet $BOTHLEGS.</h2>
+      <p class="lead">Someone started dancing. Then they used both legs. The timeline could not handle it.</p>
+    </section>
+  </main>
+  <footer>
+    <p class="brand">BOTHLEGS</p>
+    <p>The dance that broke X, now on Solana.</p>
+    <div class="links">
+      <a href="https://pump.fun/coin/ANwrbpNYrQDjojiSiDP4Z4vYm9Rt3eHH8NwUTGnTpump" target="_blank" rel="noopener noreferrer">pump.fun</a>
+      <a href="https://dexscreener.com/solana/ANwrbpNYrQDjojiSiDP4Z4vYm9Rt3eHH8NwUTGnTpump" target="_blank" rel="noopener noreferrer">DexScreener</a>
+      <a href="https://solscan.io/token/ANwrbpNYrQDjojiSiDP4Z4vYm9Rt3eHH8NwUTGnTpump" target="_blank" rel="noopener noreferrer">Solscan</a>
+      <a href="https://x.com/BOTHLEGScoin" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://t.me/bothlegscoin" target="_blank" rel="noopener noreferrer">Telegram</a>
+    </div>
+    <p class="fine">$BOTHLEGS is a memecoin. Nothing here is financial advice. Verify the contract before you buy. You can lose what you put in.</p>
+  </footer>
+  <script>
+    const CA = "ANwrbpNYrQDjojiSiDP4Z4vYm9Rt3eHH8NwUTGnTpump";
+    const lanes = {
+      a: { name: "You", combo: 0, peak: 0, hits: 0, last: null },
+      b: { name: "Floor bot", combo: 0, peak: 0, hits: 0, last: null }
+    };
+    let left = 20;
+    let timer = 0;
+    let botTimer = 0;
+    let botLeg = "R";
+    let live = false;
+    let mode = "bot";
+    let diff = "normal";
+    const DIFFS = {
+      easy: { ms: 780, slip: 0.34, note: "Easy. The bot slips a lot." },
+      normal: { ms: 520, slip: 0.18, note: "Normal. The bot slips sometimes." },
+      hard: { ms: 360, slip: 0.08, note: "Hard. The bot barely misses." },
+      insane: { ms: 240, slip: 0.02, note: "Insane. The bot almost never slips." }
+    };
+
+    function setDiff(next) {
+      if (!DIFFS[next]) return;
+      diff = next;
+      document.querySelectorAll("[data-diff]").forEach((button) => {
+        button.className = button.getAttribute("data-diff") === next ? "buy" : "ghost";
+      });
+      document.getElementById("diff-note").textContent = DIFFS[next].note;
+    }
+    document.querySelectorAll("[data-diff]").forEach((button) => {
+      button.onclick = () => setDiff(button.getAttribute("data-diff"));
+    });
+
+    function setMode(next) {
+      mode = next;
+      const bot = next === "bot";
+      document.getElementById("mode-bot").className = bot ? "buy" : "ghost";
+      document.getElementById("mode-holder").className = bot ? "ghost" : "buy";
+      document.getElementById("other-wrap").hidden = bot;
+      document.getElementById("bot-note").hidden = !bot;
+      document.getElementById("diffs").hidden = !bot;
+      document.getElementById("diff-note").hidden = !bot;
+    }
+    document.getElementById("mode-bot").onclick = () => setMode("bot");
+    document.getElementById("mode-holder").onclick = () => setMode("holder");
+    setMode("bot");
+
+    document.getElementById("copy").onclick = async () => {
+      const text = CA;
+      let ok = false;
+      try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {
+        try {
+          const area = document.createElement("textarea");
+          area.value = text;
+          area.setAttribute("readonly", "");
+          area.style.position = "fixed";
+          area.style.left = "-999px";
+          document.body.appendChild(area);
+          area.select();
+          ok = document.execCommand("copy");
+          area.remove();
+        } catch (err) { ok = false; }
+      }
+      if (!ok) return;
+      const note = document.getElementById("copied");
+      note.hidden = false;
+      setTimeout(() => { note.hidden = true; }, 1600);
+    };
+
+    function paint(side) {
+      document.getElementById("combo-" + side).textContent = lanes[side].combo;
+      document.getElementById("peak-" + side).textContent = "combo · peak " + lanes[side].peak;
+      document.getElementById("label-" + side).textContent = lanes[side].name;
+    }
+
+    function applyKick(side, leg) {
+      const lane = lanes[side];
+      if (lane.last === leg) { lane.combo = 0; lane.last = null; }
+      else {
+        lane.combo += 1;
+        lane.hits += 1;
+        lane.peak = Math.max(lane.peak, lane.combo);
+        lane.last = leg;
+      }
+      paint(side);
+    }
+
+    function stopBot() { clearInterval(botTimer); botTimer = 0; }
+
+    function begin() {
+      const spec = DIFFS[diff];
+      const you = document.getElementById("name-a").value.trim() || "You";
+      const other = mode === "bot" ? "Floor bot · " + spec.note.split(".")[0] : (document.getElementById("name-b").value.trim() || "Right holder");
+      lanes.a = { name: you, combo: 0, peak: 0, hits: 0, last: null };
+      lanes.b = { name: other, combo: 0, peak: 0, hits: 0, last: null };
+      left = 20;
+      live = true;
+      botLeg = "R";
+      document.getElementById("setup").hidden = true;
+      document.getElementById("board").hidden = false;
+      document.getElementById("result").hidden = true;
+      document.getElementById("again").hidden = true;
+      document.getElementById("change").hidden = true;
+      document.getElementById("bot-live").hidden = mode !== "bot";
+      document.getElementById("legs-b").hidden = mode === "bot";
+      document.getElementById("clock").textContent = "20";
+      paint("a"); paint("b");
+      clearInterval(timer);
+      stopBot();
+      timer = setInterval(() => {
+        left -= 1;
+        document.getElementById("clock").textContent = String(Math.max(left, 0));
+        if (left <= 0) end();
+      }, 1000);
+      if (mode === "bot") {
+        botTimer = setInterval(() => {
+          if (!live) return;
+          const slip = Math.random() < spec.slip;
+          const leg = slip ? botLeg : (botLeg === "L" ? "R" : "L");
+          botLeg = leg;
+          applyKick("b", leg);
+        }, spec.ms);
+      }
+    }
+
+    function end() {
+      if (!live) return;
+      live = false;
+      clearInterval(timer);
+      stopBot();
+      const a = lanes.a, b = lanes.b;
+      let winner = "Draw";
+      if (a.peak > b.peak || (a.peak === b.peak && a.hits > b.hits)) winner = a.name;
+      else if (b.peak > a.peak || (b.peak === a.peak && b.hits > a.hits)) winner = b.name;
+      const result = document.getElementById("result");
+      result.hidden = false;
+      result.textContent = winner === "Draw" ? "Draw. Both legs." : winner + " takes the floor.";
+      document.getElementById("again").hidden = false;
+      document.getElementById("change").hidden = false;
+      const item = document.createElement("li");
+      const who = document.createElement("span");
+      who.textContent = a.name + " vs " + b.name;
+      const win = document.createElement("span");
+      win.className = "win";
+      win.textContent = winner + " · " + a.peak + "–" + b.peak;
+      item.append(who, win);
+      document.getElementById("log").prepend(item);
+    }
+
+    document.getElementById("start").onclick = begin;
+    document.getElementById("again").onclick = begin;
+    document.getElementById("change").onclick = () => {
+      live = false;
+      clearInterval(timer);
+      stopBot();
+      document.getElementById("board").hidden = true;
+      document.getElementById("setup").hidden = false;
+    };
+    document.querySelectorAll("[data-side]").forEach((button) => {
+      button.onclick = () => {
+        if (!live) return;
+        const side = button.getAttribute("data-side");
+        if (side === "b" && mode === "bot") return;
+        applyKick(side, button.getAttribute("data-leg"));
+      };
+    });
+
+    fetch("https://api.dexscreener.com/latest/dex/tokens/" + CA)
+      .then((res) => res.json())
+      .then((data) => {
+        const pair = (data.pairs || [])[0];
+        if (!pair) return;
+        const price = pair.priceUsd ? "$" + pair.priceUsd : "—";
+        const mc = pair.marketCap ? "$" + Math.round(pair.marketCap).toLocaleString() : "—";
+        document.getElementById("tape").textContent = price + " · mcap " + mc;
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>
